@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>816</width>
-    <height>529</height>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,11 +52,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextBrowser" name="textBrowser_3">
-          <property name="maximumSize">
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="minimumSize">
            <size>
-            <width>113</width>
-            <height>29</height>
+            <width>0</width>
+            <height>25</height>
            </size>
           </property>
          </widget>
@@ -79,11 +79,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextBrowser" name="textBrowser_5">
-          <property name="maximumSize">
+         <widget class="QLineEdit" name="lineEdit_3">
+          <property name="minimumSize">
            <size>
-            <width>113</width>
-            <height>29</height>
+            <width>0</width>
+            <height>25</height>
            </size>
           </property>
          </widget>
@@ -149,11 +149,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="textBrowser_4">
-        <property name="maximumSize">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="minimumSize">
          <size>
-          <width>113</width>
-          <height>29</height>
+          <width>0</width>
+          <height>25</height>
          </size>
         </property>
        </widget>
@@ -256,7 +256,7 @@
       <string>等误差逼近</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -283,12 +283,11 @@
      </layout>
     </widget>
     <zorder>layoutWidget</zorder>
-    <zorder>label_7</zorder>
+    <zorder>layoutWidget</zorder>
     <zorder>layoutWidget</zorder>
     <zorder>label</zorder>
     <zorder>layoutWidget_3</zorder>
     <zorder>pushButton_3</zorder>
-    <zorder>pushButton_6</zorder>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -296,7 +295,7 @@
       <x>0</x>
       <y>0</y>
       <width>521</width>
-      <height>473</height>
+      <height>461</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -308,7 +307,7 @@
        <property name="minimumSize">
         <size>
          <width>391</width>
-         <height>200</height>
+         <height>250</height>
         </size>
        </property>
       </widget>
@@ -336,6 +335,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="text">
+          <string>显示曲线</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -355,7 +361,7 @@
      <x>0</x>
      <y>0</y>
      <width>816</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

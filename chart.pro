@@ -14,9 +14,25 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    paowuxian.cpp \
+    line.cpp \
+    tuoyuan.cpp \
+    point.cpp \
+    paowindows.cpp \
+    tuowindows.cpp \
+    curve.cpp
 
 HEADERS  += mainwindow.h \
-       qcustomplot.h
+       qcustomplot.h \
+    paowuxian.h \
+    line.h \
+    tuoyuan.h \
+    point.h \
+    paowindows.h \
+    tuowindows.h \
+    curve.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    paowindows.ui \
+    tuowindows.ui
