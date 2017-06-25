@@ -65,32 +65,41 @@ void MainWindow::drawpao(paowuxian &pao)
 {
     int pointnumber=(pao.MaxValue()-pao.MinValue())*100;
     double step=0.01;
-    QVector<double> x(pointnumber), y(pointnumber); // initialize with entries 0..100
-    if(pao.getDir()){
-        x[0]=pao.MinValue();
-        for (int i=0; i<pointnumber-1; ++i)
+    QCPCurve *fermatSpiral1 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
+    QVector<QCPCurveData> dataSpiral1(pointnumber);
+    QVector<QCPGraphData> dataLinear(pointnumber);
+    float m=pao.MinValue();
+    if(pao.getDir()==1){
+        for (int i=0; i<pointnumber; ++i)
         {
-            y[i] = pao.getresult(x[i]);  // let's plot a quadratic function
-            x[i+1]=x[i]+step;
+            dataSpiral1[i] = QCPCurveData(i, m, pao.getresult(m));
+            dataLinear[i].key=m;
+            dataLinear[i].value = pao.getresult(m);
+            m+=step;
         }
-        y[pointnumber-1]=pao.getresult(x[pointnumber-1]);
-    }else{
-        y[0]=pao.MinValue();
-        for (int i=0; i<pointnumber-1; ++i)
-        {
-            x[i] = pao.getresult(y[i]);  // let's plot a quadratic function
-            y[i+1]=y[i]+step;
-        }
-        x[pointnumber-1]=pao.getresult(y[pointnumber-1]);
-    }
 
+   }else{
+        for (int i=0; i<pointnumber; ++i)
+        {
+            dataSpiral1[i] = QCPCurveData(i, pao.getresult(m),m );
+            dataLinear[i].value=m;
+            dataLinear[i].key = pao.getresult(m);
+            m+=step;
+        }
+
+   }
     // create graph and assign data to it:
     //customPlot->addGraph();
-    customPlot->graph(0)->setData(x, y);
+
     // give the axes some labels:
+    fermatSpiral1->data()->set(dataSpiral1, true);
+    fermatSpiral1->setPen(QPen(Qt::blue));
+    fermatSpiral1->setBrush(QBrush(QColor(0, 0, 255, 20)));
+    //customPlot->graph(0)->data()->set(dataLinear);
     customPlot->xAxis->setLabel("x");
     customPlot->yAxis->setLabel("y");
-    customPlot->graph(0)->rescaleAxes(true);
+    customPlot->rescaleAxes();
+    //customPlot->graph(0)->rescaleAxes(true);
     // set axes ranges, so we see all data:
     //customPlot->xAxis->setRange(pao.MinValue(), pao.MaxValue());
     //customPlot->yAxis->setRange(0, 1);
