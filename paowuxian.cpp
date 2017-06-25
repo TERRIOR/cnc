@@ -54,9 +54,12 @@ float paowuxian::getresult(float in)
     return m_a*in*in+m_b*in+m_c;
 }
 //计算相交点
-point paowuxian::calintersection(line l)
+point paowuxian::calintersection(line &l, point &p, paowuxian pao)
 {
     point jiao;
+    float x=(l.k()-m_b)/m_a-p.x();//韦达定理 x1+x2=-b/a 此处b=m_b-k
+    float y=pao.getresult(x);
+    jiao.setpoint(x,y);
     return jiao;
 }
 
@@ -73,6 +76,19 @@ float paowuxian::getB() const
 float paowuxian::getC() const
 {
     return m_c;
+}
+
+line paowuxian::gettangent(point &qiepoint)
+{
+    float k=getcoefficient(qiepoint);
+    float b=qiepoint.y()-k*qiepoint.x();
+    line tangent(k,b);
+    return tangent;
+}
+
+float paowuxian::getcoefficient(point &p)
+{
+    return 2*m_a*p.x()+m_b;
 }
 
 void paowuxian::analysisstr(string str,string square,string one)

@@ -7,7 +7,25 @@ class line
 public:
     line();
     line(float a,float b,float c,float d);
+    line(float k,float b);
+    line(point p,float k);
+    float getresult(float x);
     float calculatedis(point yuanxin);
+
+    float b() const;
+    void setB(float b);
+
+    float k() const;
+    void setK(float k);
+
+    double distance() const;
+    void setDistance(double distance);
+
+    point endpoint() const;
+    void setEndpoint(const point &endpoint);
+
+    point startpoint() const;
+    void setStartpoint(const point &startpoint);
 
 private:
     float calk();

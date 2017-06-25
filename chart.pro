@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     point.cpp \
     paowindows.cpp \
     tuowindows.cpp \
-    curve.cpp
+    curve.cpp \
+    approxima.cpp
 
 HEADERS  += mainwindow.h \
        qcustomplot.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     point.h \
     paowindows.h \
     tuowindows.h \
-    curve.h
+    curve.h \
+    approxima.h
 
 FORMS    += mainwindow.ui \
     paowindows.ui \
