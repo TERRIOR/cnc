@@ -28,6 +28,8 @@ private:
     bool drawstartpointable=false;
     bool drawendpointable=false;
     bool paoortuo;//true is pao false is tuo
+    void printcode(vector<string> &vecstr);
+    vector<point> vectorpoint;
     approxima approx;
     paowuxian funpao;
     tuoyuan funtuo;
@@ -53,6 +55,8 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_6_clicked();
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 };
 
 #endif // MAINWINDOW_H

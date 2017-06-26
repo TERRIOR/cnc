@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+//三种形式的方程
 //x^2/4+y^2/9=1
+//y=x^2+x+1
+//x=y^2+y+1
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -136,6 +139,18 @@ void MainWindow::drawpoint(point &poi)
         }
     }
 }
+
+void MainWindow::printcode(vector<string> &vecstr)
+{
+    vector<string>::iterator iteratorstr=vecstr.begin();
+    while(iteratorstr!=vecstr.end()){
+        cout<<(*iteratorstr)<<endl;
+        ui->textBrowser->append(QString::fromStdString((*iteratorstr)));
+        iteratorstr++;
+
+    }
+
+}
 void MainWindow::fullscreen()
 {
     customPlot->setWindowFlags(Qt::Dialog);
@@ -266,7 +281,6 @@ void MainWindow::on_pushButton_5_pressed()
 void MainWindow::on_pushButton_3_clicked()
 {
 
-    vector<point> vectorpoint;
     if(paoortuo){
         vectorpoint= approx.calappropao(funpao,0.001,atof(ui->lineEdit->text().toStdString().c_str()));
     }else{
@@ -309,4 +323,82 @@ void MainWindow::on_pushButton_6_clicked()
         ui->label_7->setText(QString("方向：逆时"));
     }
 
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    vector<string> vectorstring;
+    int F=atoi(ui->lineEdit_2->text().toStdString().c_str());
+    int S=atoi(ui->lineEdit_3->text().toStdString().c_str());
+    bool g0org1=true;//默认为G90
+    string firststr="N01 ";
+    if(ui->radioButton->isChecked()){
+        g0org1=true;
+        firststr+="G90 ";
+    }else if(ui->radioButton_2->isChecked()){
+        g0org1=false;
+        firststr+="G91 ";
+    }
+    firststr=firststr+"M03 "+"F"+to_string(F)+" "+"S"+to_string(S);
+    cout<<firststr<<endl;
+    vectorstring.push_back(firststr);
+    string str;
+    vector<point>::iterator iteratorpoint=vectorpoint.begin();
+    point lastpoint(0,0);
+    int i=2;
+    if(g0org1){
+        while (iteratorpoint!=vectorpoint.end()) {
+            if(i<10){
+                str="N0";
+            }else{
+                str="N";
+            }
+            if(i==2){
+                str=str+to_string(i)+" G01 X"+to_string((*iteratorpoint).x())+" Y"+to_string((*iteratorpoint).y());
+            }else{
+                str=str+to_string(i)+" X"+to_string((*iteratorpoint).x())+" Y"+to_string((*iteratorpoint).y());
+            }
+            iteratorpoint++;
+            i++;
+            vectorstring.push_back(str);
+        }
+
+    }else{
+        while (iteratorpoint!=vectorpoint.end()) {
+            if(i<10){
+                str="N0";
+            }else{
+                str="N";
+            }
+            if(i==2){
+                str=str+to_string(i)+" G01 X"+to_string((*iteratorpoint).x()-lastpoint.x())+" Y"+to_string((*iteratorpoint).y()-lastpoint.y());
+            }else{
+                str=str+to_string(i)+" X"+to_string((*iteratorpoint).x()-lastpoint.x())+" Y"+to_string((*iteratorpoint).y()-lastpoint.y());
+            }
+            lastpoint=(*iteratorpoint);
+            iteratorpoint++;
+            i++;
+            vectorstring.push_back(str);
+        }
+    }
+    string laststr="N"+ to_string(i)+" M02";
+    vectorstring.push_back(laststr);
+    printcode(vectorstring);
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString filename = QFileDialog::getSaveFileName(this,
+            tr("Save CNC Code"),
+            "",
+            tr("*.txt")); //选择路径
+        if(filename.isEmpty())
+        {
+            return;
+        }
+        else
+        {
+            cout<<filename.toStdString()<<endl;
+        }
 }
