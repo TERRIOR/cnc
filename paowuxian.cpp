@@ -34,6 +34,13 @@ paowuxian::paowuxian(string str)
     readpaocan(str);
 }
 
+point paowuxian::pointoncurve(point &p)
+{
+    float x=p.x();
+    float y=getresult(x);
+    return point(x,y);
+}
+
 paowuxian::~paowuxian()
 {
 

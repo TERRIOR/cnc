@@ -1,5 +1,10 @@
 #include "line.h"
 
+line::line()
+{
+
+}
+
 line::line(float a,float b,float c,float d)
 {
     m_startpoint.setpoint(a,b);

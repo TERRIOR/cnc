@@ -9,6 +9,7 @@ public:
     paowuxian();
     paowuxian(float a,float b,float c,bool dir);
     paowuxian(string str);
+    point pointoncurve(point &p);
     void setpaocan(float a,float b,float c,bool dir);
     void readpaocan(string str);
     ~paowuxian();

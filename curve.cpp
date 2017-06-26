@@ -15,6 +15,11 @@ curve::~curve()
 
 }
 
+point curve::pointoncurve(point &p)
+{
+    return p;
+}
+
 float curve::MinValue() const
 {
     return m_MinValue;

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <iostream>
+#include "tuoyuan.h"
 using namespace std;
 namespace Ui {
 class tuowindows;
@@ -16,7 +17,7 @@ public:
     explicit tuowindows(QWidget *parent = 0);
     ~tuowindows();
 signals:
-    void senddata(string);
+    void senddata(tuoyuan);
 private slots:
     void on_buttonBox_accepted();
 private:

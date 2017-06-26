@@ -8,6 +8,7 @@ public:
     curve();
     curve(float max,float min);
     ~curve();
+    virtual point pointoncurve(point &p);
     float MinValue() const;
     void setMinValue(float MinValue);
 

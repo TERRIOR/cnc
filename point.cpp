@@ -33,3 +33,13 @@ float point::y() const
 {
     return m_y;
 }
+
+void point::setX(float x)
+{
+    m_x = x;
+}
+
+void point::setY(float y)
+{
+    m_y = y;
+}

@@ -15,5 +15,13 @@ tuowindows::~tuowindows()
 }
 void tuowindows::on_buttonBox_accepted()
 {
-    emit senddata("hi");
+    tuoyuan fun;
+    string function;
+    function=ui->lineEdit->text().toStdString();
+    fun.readtuocan(function);
+    cout<<"y  "<<function<<endl;
+    fun.setMinValue(atof(ui->lineEdit_5->text().toStdString().c_str()));
+    fun.setMaxValue(atof(ui->lineEdit_6->text().toStdString().c_str()));
+    emit senddata(fun);
+    //emit senddata("hi");
 }
