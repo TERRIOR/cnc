@@ -11,7 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     actionfullScreen=ui->actionFullScreen;
     connect(actionfullScreen,SIGNAL(triggered()),this,SLOT(fullscreen()));
-
+    connect(ui->actionSAVE_CNC_CODE,SIGNAL(triggered()),this,SLOT(savedata()));
+    connect(ui->action,SIGNAL(triggered()),this,SLOT(openaboutme()));
     customPlot=ui->customPlot;
     customPlot->installEventFilter(this);
     customPlot->setSelectionTolerance(20);
@@ -51,6 +52,7 @@ MainWindow::~MainWindow()
 {
     delete paowin;
     delete tuowin;
+    delete am;
     delete fermatSpiral1;
     delete fermatSpiral2;
     delete ui;
@@ -151,11 +153,19 @@ void MainWindow::printcode(vector<string> &vecstr)
     }
 
 }
+
 void MainWindow::fullscreen()
 {
     customPlot->setWindowFlags(Qt::Dialog);
     customPlot->showFullScreen();
     cout<<"fullscreen"<<endl;
+}
+
+void MainWindow::openaboutme()
+{
+    am=new aboutme();
+    //connect(am,SIGNAL(senddata(paowuxian)),this,SLOT(receivedatapao(paowuxian)));
+    am->show();
 }
 
 void MainWindow::on_pushButtonf_clicked()
@@ -259,6 +269,41 @@ void MainWindow::myMousepressed(QMouseEvent *event)
 
 }
 
+void MainWindow::savedata()
+{
+    //QString file1= QFileDialog::getSaveFileName();
+    QString filename = QFileDialog::getSaveFileName(this,
+            tr("Save CNC Code"),
+            "",
+            tr("*.txt")); //选择路径
+        if(filename.isEmpty())
+        {
+            return;
+        }
+        else
+        {
+            QFileInfo fileInfo(filename);
+            QString filebase =fileInfo.baseName();
+            cout<<filename.toStdString()<<" "<<filebase.toStdString()<<endl;
+            QString sFilePath = filename;
+            QFile file(sFilePath);
+            //方式：Append为追加，WriteOnly，ReadOnly
+            if (!file.open(QIODevice::WriteOnly|QIODevice::Text)) {
+                QMessageBox::critical(NULL, "提示", "无法创建文件");
+                return;
+            }
+            QTextStream out(&file);
+            vector<string>::iterator iteratorstr=vectorstring.begin();
+            out<<filebase<<endl;
+            while(iteratorstr!=vectorstring.end()){
+                out<<QString::fromStdString( (*iteratorstr))<<endl;
+                iteratorstr++;
+            }
+            out.flush();
+            file.close();
+        }
+}
+
 void MainWindow::on_pushButton_4_pressed()
 {
     drawstartpointable=!drawstartpointable;//取反
@@ -327,7 +372,7 @@ void MainWindow::on_pushButton_6_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    vector<string> vectorstring;
+
     int F=atoi(ui->lineEdit_2->text().toStdString().c_str());
     int S=atoi(ui->lineEdit_3->text().toStdString().c_str());
     bool g0org1=true;//默认为G90
@@ -389,16 +434,5 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QString filename = QFileDialog::getSaveFileName(this,
-            tr("Save CNC Code"),
-            "",
-            tr("*.txt")); //选择路径
-        if(filename.isEmpty())
-        {
-            return;
-        }
-        else
-        {
-            cout<<filename.toStdString()<<endl;
-        }
+    savedata();
 }

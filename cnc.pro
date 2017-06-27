@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
-TARGET = chart
+TARGET = cnc
 TEMPLATE = app
 
 
@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     paowindows.cpp \
     tuowindows.cpp \
     curve.cpp \
-    approxima.cpp
+    approxima.cpp \
+    aboutme.cpp
 
 HEADERS  += mainwindow.h \
        qcustomplot.h \
@@ -33,8 +34,10 @@ HEADERS  += mainwindow.h \
     paowindows.h \
     tuowindows.h \
     curve.h \
-    approxima.h
+    approxima.h \
+    aboutme.h
 
 FORMS    += mainwindow.ui \
     paowindows.ui \
-    tuowindows.ui
+    tuowindows.ui \
+    aboutme.ui

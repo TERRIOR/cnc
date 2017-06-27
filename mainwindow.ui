@@ -118,7 +118,7 @@
       <string>保存</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>19</x>
@@ -421,16 +421,15 @@
     </property>
     <addaction name="actionFullScreen"/>
    </widget>
-   <widget class="QMenu" name="menu_3">
+   <widget class="QMenu" name="menu_4">
     <property name="title">
-     <string>设置</string>
+     <string>关于</string>
     </property>
-    <addaction name="actionCNC"/>
-    <addaction name="action_3"/>
+    <addaction name="action"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -459,6 +458,11 @@
   <action name="actionFullScreen">
    <property name="text">
     <string>Full Screen</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>关于作者</string>
    </property>
   </action>
  </widget>

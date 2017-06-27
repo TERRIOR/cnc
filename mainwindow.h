@@ -7,6 +7,7 @@
 #include "qcustomplot.h"
 #include <iostream>
 #include "approxima.h"
+#include "aboutme.h"
 using namespace std;
 namespace Ui {
 class MainWindow;
@@ -30,9 +31,11 @@ private:
     bool paoortuo;//true is pao false is tuo
     void printcode(vector<string> &vecstr);
     vector<point> vectorpoint;
+    vector<string> vectorstring;
     approxima approx;
     paowuxian funpao;
     tuoyuan funtuo;
+    aboutme *am;
     paowindows *paowin;
     tuowindows *tuowin;
     Ui::MainWindow *ui;
@@ -44,12 +47,14 @@ private:
     bool ellispedir=true;
 private slots:
     void fullscreen();
+    void openaboutme();
     void on_pushButtonf_clicked();
     void receivedatapao(paowuxian fun);
     void receivedatatuo(tuoyuan tuo);
     void on_pushButton_7_clicked();
     void myMousemove(QMouseEvent *event);
     void myMousepressed(QMouseEvent *event);
+    void savedata();
     void on_pushButton_4_pressed();
     void on_pushButton_5_pressed();
     void on_pushButton_3_clicked();
