@@ -26,14 +26,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QCPScatterStyle myScatter;
     myScatter.setShape(QCPScatterStyle::ssDisc);
     myScatter.setPen(QPen(Qt::red));
-    myScatter.setBrush(QBrush(Qt::white));
+    //myScatter.setBrush(QBrush(Qt::white));
     myScatter.setSize(5);
     customPlot->graph(1)->setLineStyle(QCPGraph::lsNone);
     customPlot->graph(1)->setScatterStyle(myScatter);
     fermatSpiral1 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
     fermatSpiral2 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
     fermatSpiral1->setPen(QPen(Qt::blue,3));
-    fermatSpiral1->setBrush(QBrush(QColor(0, 0, 255, 20)));
+    //fermatSpiral1->setBrush(QBrush(QColor(0, 0, 255, 20)));
     customPlot->xAxis->setLabel("x");
     customPlot->yAxis->setLabel("y");
     customPlot->rescaleAxes();
@@ -98,7 +98,7 @@ void MainWindow::drawpao(paowuxian &pao)
 
    }
     fermatSpiral1->data()->set(dataSpiral1, true);
-
+    customPlot->rescaleAxes();
 }
 
 void MainWindow::drawtuo(tuoyuan &tuo)
@@ -118,6 +118,7 @@ void MainWindow::drawtuo(tuoyuan &tuo)
 
     // give the axes some labels:
     fermatSpiral1->data()->set(dataSpiral1, true);
+    customPlot->rescaleAxes();
 }
 
 void MainWindow::drawpoint(point &poi)
@@ -353,10 +354,12 @@ void MainWindow::on_pushButton_3_clicked()
     // give the axes some labels:
     fermatSpiral2->data()->set(dataSpiral2, true);
     fermatSpiral2->setPen(QPen(Qt::yellow,2));
-    fermatSpiral2->setBrush(QBrush(QColor(255, 0, 0, 20)));
+    //fermatSpiral2->setBrush(QBrush(QColor(255, 0, 0, 20)));
+    customPlot->rescaleAxes();
     customPlot->repaint();
     //customPlot->graph(2)->setData(x,y);
     ui->label->setText(tr("结果: %1").arg(count));
+
 }
 
 void MainWindow::on_pushButton_6_clicked()

@@ -30,7 +30,7 @@ void tuoyuan::analysistuo(float &m,float &a,string strfun)
     int indexzuo=strfun.find('(');
     int indexyou=strfun.find('(');
     a=atof(strfun.substr(indexchu+1).c_str());//取出÷号后面的数字 并开方得到该方程的a/b
-    if(indexzuo==string::npos&&indexyou==string::npos){
+    if(indexzuo==string::npos&&indexyou==string::npos){//没有括号说明没有m/n
         m=0;
     }else{
         m=atof(strfun.substr(3,indexyou-3).c_str());
@@ -48,7 +48,8 @@ point tuoyuan::calintersection(line &l, point &p, tuoyuan &tuo)
 {
     float x1=p.x();
     float y1=p.y();
-    float x12=(tuo.a2()*l.k()*(2*tuo.n()-2*l.b())+2*tuo.b2()*tuo.m())/(tuo.b2()+tuo.a2()*l.k()*l.k());
+    float x12=(tuo.a2()*l.k()*(2*tuo.n()-2*l.b())+2*tuo.b2()*tuo.m())
+            /(tuo.b2()+tuo.a2()*l.k()*l.k());
     float x2=x12-x1;
     float y12=l.k()*x12+2*l.b();
     float y2=y12-y1;

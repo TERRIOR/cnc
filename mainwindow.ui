@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="app.qrc">
+    <normaloff>:/new/prefix1/cnc_machine_512px_1101364_easyicon.net.png</normaloff>:/new/prefix1/cnc_machine_512px_1101364_easyicon.net.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
@@ -59,6 +63,12 @@
             <height>25</height>
            </size>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>121</width>
+            <height>16777215</height>
+           </size>
+          </property>
          </widget>
         </item>
        </layout>
@@ -84,6 +94,12 @@
            <size>
             <width>0</width>
             <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>121</width>
+            <height>16777215</height>
            </size>
           </property>
          </widget>
@@ -187,6 +203,12 @@
          <size>
           <width>0</width>
           <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>137</width>
+          <height>16777215</height>
          </size>
         </property>
        </widget>
@@ -308,6 +330,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_6">
+        <property name="maximumSize">
+         <size>
+          <width>96</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>方向取反</string>
         </property>
@@ -406,7 +434,7 @@
      <x>0</x>
      <y>0</y>
      <width>816</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -462,7 +490,7 @@
   </action>
   <action name="action">
    <property name="text">
-    <string>关于作者</string>
+    <string>关于软件</string>
    </property>
   </action>
  </widget>
@@ -475,6 +503,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="app.qrc"/>
+ </resources>
  <connections/>
 </ui>

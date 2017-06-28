@@ -10,8 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = cnc
 TEMPLATE = app
-
-
+RC_FILE = app.rc
 SOURCES += main.cpp\
         mainwindow.cpp \
     qcustomplot.cpp \
@@ -41,3 +40,9 @@ FORMS    += mainwindow.ui \
     paowindows.ui \
     tuowindows.ui \
     aboutme.ui
+
+RESOURCES += \
+    app.qrc
+
+DISTFILES += \
+    app.rc

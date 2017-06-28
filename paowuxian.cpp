@@ -63,11 +63,11 @@ float paowuxian::getresult(float in)
 //计算相交点
 point paowuxian::calintersection(line &l, point &p, paowuxian pao)
 {
-    point jiao;
+    point IntersectionPoint;
     float x=(l.k()-m_b)/m_a-p.x();//韦达定理 x1+x2=-b/a 此处b=m_b-k
-    float y=pao.getresult(x);
-    jiao.setpoint(x,y);
-    return jiao;
+    float y=pao.getresult(x);//根据横坐标，计算在该抛物线的y坐标
+    IntersectionPoint.setpoint(x,y);//设置XY
+    return IntersectionPoint;
 }
 
 float paowuxian::getA() const

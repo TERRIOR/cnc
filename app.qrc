@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>cnc_machine_512px_1101364_easyicon.net.png</file>
+    </qresource>
+</RCC>
